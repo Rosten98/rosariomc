@@ -1,44 +1,61 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import 'react-native-gesture-handler';
 
 import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
-  Text,
-  StatusBar,
+  Text
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 
-import Navigation from './components/Navigation';
+
+import Home from './components/Home';
+import MysteriesList from './components/MysteriesList';
+import About from './components/About';
+
+const Tab = createBottomTabNavigator();
 
 const App: () => React$Node = () => {
   return (
-    <View style={styles.body}>
-      <Navigation/>
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color, size }) => {
+            let iconName;
+            if (route.name === 'Inicio') {
+              iconName = 'home-sharp'
+            } else if (route.name === 'Misterios') {
+              iconName = 'bookmarks-sharp'
+            } else if (route.name === 'Nosotros') {
+              iconName = 'information-circle-outline'
+            }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: 'black',
+          inactiveTintColor: 'gray',
+        }}
+      >
+        <Tab.Screen name="Inicio" component={Home}/>
+        <Tab.Screen name="Misterios" component={MysteriesList} />
+        <Tab.Screen name="Nosotros" component={About} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 };
 
 const styles = StyleSheet.create({
   body: {
     backgroundColor: "#fff",
-    flex:1
-  },
+    flex: 1
+  }
 });
 
 export default App;
