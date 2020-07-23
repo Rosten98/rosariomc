@@ -32,6 +32,8 @@ const App: () => React$Node = () => {
               iconName = 'bookmarks-sharp'
             } else if (route.name === 'Nosotros') {
               iconName = 'information-circle-outline'
+            } else {
+              iconName = 'home-sharp'
             }
 
             // You can return any component that you like here!

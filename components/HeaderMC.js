@@ -22,9 +22,10 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 100,
         padding: 7,
         alignItems: 'center',
-        shadowColor: "#000",
-        shadowOpacity: 0.18,
-        shadowRadius: 1.00,
+        // IOS specific
+        shadowOffset:{  width: 10,  height: 10,  },
+        shadowColor: 'red',
+        shadowOpacity: 1.0,
         elevation: 2,
     }
 });

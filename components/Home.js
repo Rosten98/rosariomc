@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   textHeader: {
+    color: "#363636",
     flex: 1, 
     fontSize: 25, 
     fontWeight: 'bold',

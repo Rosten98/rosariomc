@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, FlatList, StyleSheet } from 'react-native'
 import HeaderMC from './HeaderMC'
+import MysteryCard from './MysteryCard'
 import mysteries from './mysteries'
+
 
 class MysteriesList extends Component {
   constructor() {
@@ -12,17 +14,38 @@ class MysteriesList extends Component {
   }
 
   render() {
-    const mysteriesComp = this.state.mysteriesList.map( mystery => {
-      return <Text>{mystery.name} {mystery.days}</Text>
-    })
+    // const mysteriesComp = this.state.mysteriesList.map( mystery => {
+    //   return <Text key={mysteries.id}>{mystery.name} {mystery.days}</Text>
+    // })
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: '#222' }}>
             <HeaderMC/>
-            {mysteriesComp}
+            <Text style={[styles.textHeader, styles.textCenter]} > Misterios </Text>
+            <FlatList
+              data={this.state.mysteriesList}
+              renderItem={({ item }) => (
+                <MysteryCard mystery={item}/>
+            )}
+            />
         </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  textHeader: {
+    color: "#555",
+    marginVertical: 20, 
+    fontSize: 22, 
+    fontWeight: 'bold',
+    margin: 0
+  },
+  textCenter: {
+    marginLeft: 20,
+    // textAlign: 'center', 
+    textAlignVertical: 'center', 
+  },
+})
 
 export default MysteriesList
