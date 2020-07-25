@@ -1,21 +1,20 @@
+// Always at the top of the page
 import 'react-native-gesture-handler';
 
 import React from 'react';
 import {
-  StyleSheet,
-  View,
-  Text
+  StyleSheet
 } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import AntDesign from 'react-native-vector-icons/AntDesign'
 
 
 import Home from './components/Home';
-import MysteriesList from './components/MysteriesList';
+import MysteriesList from './components/mysteries/MysteriesList';
 import About from './components/About';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
 
@@ -45,6 +44,7 @@ const App: () => React$Node = () => {
           inactiveTintColor: 'gray',
         }}
       >
+        
         <Tab.Screen name="Inicio" component={Home}/>
         <Tab.Screen name="Misterios" component={MysteriesList} />
         <Tab.Screen name="Nosotros" component={About} />

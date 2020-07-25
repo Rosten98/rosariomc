@@ -1,6 +1,6 @@
 export default [
     {
-        "key": 1,
+        "id": 1,
         "name": "Gozosos",
         "days": "Lun y Sáb",
         "mysteries": [
@@ -12,28 +12,28 @@ export default [
         ]
     },
     {
-        "key": 2,
+        "id": 2,
         "name": "Gloriosos",
         "days": "Dom y Miér",
         "mysteries": [
         ]
     },
     {
-        "key": 3,
+        "id": 3,
         "name": "Dolorosos",
         "days": "Mar y Vier",
         "mysteries": [
         ]
     },
     {
-        "key": 4,
+        "id": 4,
         "name": "Luminosos",
         "days": "Jueves",
         "mysteries": [
         ]
     },
     {
-        "key": 6,
+        "id": 5,
         "name": "Mater Dolorosa",
         "days": "",
         "mysteries": [
