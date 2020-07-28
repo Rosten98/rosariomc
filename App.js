@@ -2,9 +2,6 @@
 import 'react-native-gesture-handler';
 
 import React from 'react';
-import {
-  StyleSheet
-} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -14,7 +11,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Home from './components/Home';
 import MysteriesList from './components/mysteries/MysteriesList';
 import About from './components/About';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
 
@@ -52,12 +48,5 @@ const App: () => React$Node = () => {
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  body: {
-    backgroundColor: "#fff",
-    flex: 1
-  }
-});
 
 export default App;

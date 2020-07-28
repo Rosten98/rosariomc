@@ -1,5 +1,6 @@
 import React from 'react'
 import {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native'
+import styles from '../styles'
 
 function MysteryCard({ mystery }) {
     return(
@@ -17,37 +18,5 @@ function MysteryCard({ mystery }) {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    card: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        backgroundColor: "#363636",
-        borderRadius: 10,
-        elevation: 2,
-        marginVertical: 10,
-        marginHorizontal: 20,
-        padding: 20,
-    },
-    txtTitle: {
-        color: "#fff",
-        fontSize: 18,
-        fontWeight: "bold",
-    },
-    txtSub: {
-        color: "#8b8b8b",
-    },  
-    button : {
-        borderRadius: 5,
-        alignItems: "center",
-        backgroundColor: "#003B97",
-        justifyContent: "center",
-        paddingHorizontal: 20,
-    },
-    btnText: {
-        color: "#fff",
-        fontSize: 14,
-    }
-})
 
 export default MysteryCard
