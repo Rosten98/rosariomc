@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import HeaderMC from './HeaderMC';
+import LinearGradient from 'react-native-linear-gradient'
 
 class Home extends Component {
   render() {
@@ -10,12 +11,13 @@ class Home extends Component {
         <Text style={[styles.textHeader, styles.textCenter]} > El Santo Rosario </Text>
         <View style={styles.mainContent}> 
           <Text style={[styles.textCenter, styles.text]}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget gravida facilisis aliquam dictum. Libero scelerisque leo id at quisque sit massa vestibulum. </Text> 
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => Alert.alert("Touch")}
-            >
-            <Text style={styles.btnText}>Rezar misterios del día</Text>
-          </TouchableOpacity>
+          <LinearGradient colors={['#003b97', '#05204A']} style={styles.btnGradient}>
+            <TouchableOpacity
+              onPress={() => Alert.alert("Touch")}
+              >
+                <Text style={styles.btnText}>Rezar misterios del día</Text>
+            </TouchableOpacity>
+          </LinearGradient>
         </View>
       </View>
     )
@@ -32,7 +34,6 @@ const styles = StyleSheet.create({
     flex: 1, 
     fontSize: 25, 
     fontWeight: 'bold',
-    margin: 0
   },
   textCenter: {
     textAlign: 'center', 
@@ -40,23 +41,21 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    lineHeight: 30,
+    lineHeight: 30
   },
   mainContent : {
     flex: 5,
     justifyContent: "space-around",
-    padding: 20,
-  },
-  button : {
-    borderRadius: 5,
-    alignItems: "center",
-    backgroundColor: "#003B97",
-    padding: 12,
+    padding: 10,
   },
   btnText : {
     color: "#fff",
-    // fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 16,
+  },
+  btnGradient: {
+    alignItems: "center",
+    padding: 12,
+    borderRadius: 5
   }
 })
 

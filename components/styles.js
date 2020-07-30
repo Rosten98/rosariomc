@@ -7,7 +7,6 @@ const styles =  StyleSheet.create({
     },
     container: {
         backgroundColor: "#fff",
-        elevation: 2,
         margin: 10,
         padding: 20,
         borderRadius: 10
@@ -15,7 +14,8 @@ const styles =  StyleSheet.create({
     image: {
         width: undefined,
         height: undefined,
-        padding: 30
+        padding: 30,
+        marginBottom: 10,
     },
     text: {
         fontSize: 14,
@@ -30,15 +30,14 @@ const styles =  StyleSheet.create({
     card: {
         flexDirection: "row",
         justifyContent: "space-between",
-        backgroundColor: "#363636",
+        backgroundColor: "#fff",
         borderRadius: 10,
-        elevation: 2,
         marginVertical: 10,
-        marginHorizontal: 20,
+        marginHorizontal: 10,
         padding: 20,
     },
     txtTitle: {
-        color: "#fff",
+        color: "#363636",
         fontSize: 18,
         fontWeight: "bold",
     },
@@ -50,12 +49,29 @@ const styles =  StyleSheet.create({
         alignItems: "center",
         backgroundColor: "#003B97",
         justifyContent: "center",
-        paddingHorizontal: 20,
+        paddingHorizontal: 12,
     },
     btnText: {
         color: "#fff",
         fontSize: 14,
-    }
+        textTransform: "capitalize"
+    },
+    btnGradient: {
+      alignItems: "center",
+      padding: 12,
+      paddingHorizontal: 20,
+      borderRadius: 5
+    }, 
+    textHeader: {
+        color: "#555",
+        marginVertical: 20, 
+        fontSize: 22, 
+        fontWeight: 'bold',
+    },
+    textCenter: {
+        marginLeft: 10, 
+        textAlignVertical: 'center', 
+    },
 });
 
 export default styles;

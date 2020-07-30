@@ -16,9 +16,10 @@ class About extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1}}>
+      <View style={{ flex: 1 }}>
         <HeaderMC/>
-        <ScrollView style={{marginTop: 10}}>
+        <Text style={[styles.textHeader, styles.textCenter]} > Sobre nosotros </Text>
+        <ScrollView>
             <View style={styles.container}>
               <Image
                 style={styles.image}

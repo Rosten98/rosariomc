@@ -1,6 +1,7 @@
 import React, {useCallback} from 'react'
-import {Button, Linking} from 'react-native'
-
+import {Linking, TouchableOpacity, Text} from 'react-native'
+import LinearGradient from 'react-native-linear-gradient' 
+import styles from '../styles'
 const OpenURLButton = ({ url, children }) => {
     const handlePress = useCallback(async () => {
       // Checking if the link is supported for links with custom URL scheme.
@@ -15,7 +16,16 @@ const OpenURLButton = ({ url, children }) => {
       }
     }, [url]);
   
-    return <Button title={children} onPress={handlePress} />;
+    // return <Button title={children} onPress={handlePress} />;
+    return ( 
+      <LinearGradient colors={['#003b97', '#05204A']} style={styles.btnGradient}>
+        <TouchableOpacity
+        onPress={handlePress}
+        >
+            <Text style={styles.btnText}>{children}</Text>
+        </TouchableOpacity>
+      </LinearGradient>
+    )
 };
 
 export default OpenURLButton

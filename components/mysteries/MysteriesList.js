@@ -3,6 +3,7 @@ import { Text, View, FlatList, StyleSheet } from 'react-native'
 import HeaderMC from '../HeaderMC'
 import MysteryCard from './MysteryCard'
 import mysteries from './mysteries'
+import styles from '../styles'
 
 
 class MysteriesList extends Component {
@@ -19,7 +20,7 @@ class MysteriesList extends Component {
     // })
 
     return (
-        <View style={{ flex: 1, backgroundColor: '#222' }}>
+        <View >
             <HeaderMC/>
             <Text style={[styles.textHeader, styles.textCenter]} > Misterios </Text>
             <FlatList
@@ -33,19 +34,5 @@ class MysteriesList extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  textHeader: {
-    color: "#555",
-    marginVertical: 20, 
-    fontSize: 22, 
-    fontWeight: 'bold',
-    margin: 0
-  },
-  textCenter: {
-    marginLeft: 20, 
-    textAlignVertical: 'center', 
-  },
-})
 
 export default MysteriesList
