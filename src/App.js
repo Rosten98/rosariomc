@@ -35,7 +35,7 @@ const App: () => React$Node = () => {
           }}
         />
       </RootStack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer> 
   );
 };
 

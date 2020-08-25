@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Alert } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, Alert, ImageBackground } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import LinearGradient from 'react-native-linear-gradient'
@@ -14,35 +14,37 @@ const BottomTab = createBottomTabNavigator();
 class HomeScreen extends Component {
   render() {
     return (
-      <View style={styles.body}>
-        <Heading title="El Santo Rosario"/>
-        <View style={styles.container}>
-          <LinearGradient 
-            colors={['#FFFFFF', '#A8BB99']} 
-            style={styles.gradient}
-            start={{ x: 0, y: 1 }}
-            end={{ x: 1, y: 1 }}>
-            <Text style={[styles.text, styles.textTitle]}>Un mensaje de Miles Christi</Text>
-            <Text style={[styles.text, styles.textContent]}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget gravida facilisis aliquam dictum. Libero scelerisque leo id at quisque sit massa vestibulum. </Text> 
-          </LinearGradient>
+      <ImageBackground source={require('../assets/img/flor.jpg')} style={styles.image}>
+        <View style={styles.body}>
+          <Heading title="El Santo Rosario"/>
+          <View style={styles.container}>
+            <LinearGradient 
+              colors={['#FFFFFF', '#D6E4B6']} 
+              style={styles.gradient}
+              start={{ x: 0, y: 1 }}
+              end={{ x: 1, y: 1 }}>
+              <Text style={[styles.text, styles.textTitle]}>Un mensaje de Miles Christi</Text>
+              <Text style={[styles.text, styles.textContent]}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget gravida facilisis aliquam dictum. Libero scelerisque leo id at quisque sit massa vestibulum. Consectetur adipiscing elit. Eget gravida facilisis aliquam dictum.</Text> 
+            </LinearGradient>
+          </View>
+          <View style={styles.container}>
+            <LinearGradient 
+              colors={['#FFFFFF', '#D6E4B6']} 
+              style={styles.gradient}
+              start={{ x: 0, y: 1 }}
+              end={{ x: 1, y: 1 }}>
+              <Text style={[styles.text, styles.textTitle]}>Misterios de hoy</Text>
+              <Text style={[styles.text, styles.textContent]}>Lorem ipsum dolor sit amet.</Text> 
+              <TouchableOpacity
+                style={styles.btn}
+                onPress={() => this.props.navigation.navigate("PlayRosary")}
+                >
+                  <Text style={styles.btnTxt}>Rezar</Text>
+              </TouchableOpacity>
+            </LinearGradient>
+          </View>
         </View>
-        <View style={styles.container}>
-          <LinearGradient 
-            colors={['#FFFFFF', '#A8BB99']} 
-            style={styles.gradient}
-            start={{ x: 0, y: 1 }}
-            end={{ x: 1, y: 1 }}>
-            <Text style={[styles.text, styles.textTitle]}>Misterios de hoy</Text>
-            <Text style={[styles.text, styles.textContent]}>Lorem ipsum dolor sit amet.</Text> 
-            <TouchableOpacity
-              style={styles.btn}
-              onPress={() => this.props.navigation.navigate("PlayRosary")}
-              >
-                <Text style={styles.btnTxt}>Rezar</Text>
-            </TouchableOpacity>
-          </LinearGradient>
-        </View>
-      </View>
+      </ImageBackground>
     )
   }
 }
@@ -106,21 +108,29 @@ const styles =  StyleSheet.create({
     width: 100,
     backgroundColor: "#D33F49",
     borderRadius: 50,
-    padding: 10,
+    paddingVertical: 15,
+    marginTop: 20,
+    width: 140,
   }, 
   btnTxt: {
     color: "#fff",
     fontWeight: 'bold',
     textTransform: "capitalize",
     alignSelf: "center",
+    fontSize: 16
   },
   gradient: {
     borderRadius: 5,
     marginVertical: 20,
     paddingVertical: 15,
     paddingHorizontal: 20,
+    elevation: 1
   },
-
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
+  },
 })
 
 export default Home

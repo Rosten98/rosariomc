@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList, StyleSheet } from 'react-native'
+import { View, FlatList, StyleSheet, ImageBackground } from 'react-native'
 import Heading from '../components/Heading'
 import MysteryCard from '../components/MysteryCard'
 import mysteries from '../assets/mysteries'
@@ -15,6 +15,7 @@ class Mysteries extends Component {
 
   render() {
     return (
+      <ImageBackground source={require('../assets/img/flor.jpg')} style={styles.image}>
         <View style={styles.body}>
             <Heading title="Misterios"/>
             <FlatList
@@ -26,6 +27,7 @@ class Mysteries extends Component {
               )}
             />
         </View>
+      </ImageBackground>
     )
   }
 }
@@ -45,7 +47,12 @@ const styles = StyleSheet.create({
   list: {
     // backgroundColor: 'red',
     // paddingVertical: 100
-  }
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
+  },
 })
 
 export default Mysteries

@@ -4,32 +4,26 @@ import LinearGradient from 'react-native-linear-gradient'
 
 function MysteryCard({ mystery }) {
     return(
-        <View style={styles.card}>
+        <LinearGradient 
+              colors={['#FFFFFF', '#D6E4B6']} 
+              style={styles.gradient}
+              start={{ x: 0, y: 1 }}
+              end={{ x: 1, y: 1 }}>  
             <View>
                 <Text style={styles.textTitle}>{mystery.name}</Text>
                 <Text style={styles.textSub}>Rezar en: {mystery.days}</Text>
             </View>
-            <LinearGradient colors={['#003b97', '#05204A']} style={styles.btnGradient}>
-                <TouchableOpacity
+            <TouchableOpacity
                 style={styles.btn}
                 onPress={() => Alert.alert(mystery.name)}
-                >
-                    <Text style={styles.btnText}>Rezar</Text>
-                </TouchableOpacity>
-            </LinearGradient>
-        </View>
+            >
+                <Text style={styles.btnTxt}>Rezar</Text>
+            </TouchableOpacity>
+        </LinearGradient>
     )
 }
 
 const styles = new StyleSheet.create({
-    card: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        backgroundColor: "#fff",
-        borderRadius: 10,
-        marginVertical: 10,
-        padding: 20,
-    },
     textTitle: {
         color: "#363636",
         fontSize: 18,
@@ -37,19 +31,31 @@ const styles = new StyleSheet.create({
     },
     textSub: {
         color: "#8b8b8b",
+        fontSize: 16,
+        marginTop: 10
     }, 
-    btnGradient: {
-        borderRadius: 5,
-    },
     btn: {
-        padding: 15
-    },
-    btnText: {
+        width: 100,
+        backgroundColor: "#D33F49",
+        borderRadius: 50,
+        paddingVertical: 15,
+        marginTop: 20,
+        width: 140,
+    }, 
+    btnTxt: {
         color: "#fff",
+        fontWeight: 'bold',
         textTransform: "capitalize",
-        alignSelf: "center"
+        alignSelf: "center",
+        fontSize: 16
     },
-    
+    gradient: {
+        borderRadius: 5,
+        marginVertical: 10,
+        paddingVertical: 15,
+        paddingHorizontal: 20,
+        elevation: 1
+    },
 })
 
 export default MysteryCard

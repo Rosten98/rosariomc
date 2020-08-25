@@ -5,7 +5,8 @@ import {
   Image, 
   StyleSheet, 
   TouchableOpacity, 
-  ScrollView 
+  ScrollView,
+  ImageBackground
 } from 'react-native'
 import Heading from '../components/Heading'
 import OpenURLButton from '../components/OpenURLButton'
@@ -22,30 +23,32 @@ class About extends Component {
 
   render() {
     return (
-      <View style={styles.body}>
-        <Heading title="Sobre Nosotros"/>
-        <ScrollView>
-            <View style={styles.container}>
-              <Image
-                style={styles.image}
-                source={require('../assets/img/banner.png')}
-                resizeMode="contain"
-              />
-              <Text style={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh enim, consectetur vel augue in imperdiet.</Text>
-              <OpenURLButton url={milesSite}>Visitar sitio web</OpenURLButton>
-            </View>
-            <View style={styles.container}>
-              <Icon style={styles.icon} name="mail"/>
-              <Text style={styles.text}>Envíanos un mensaje con tus inquietudes</Text>
-              <OpenURLButton url={milesMail}>Enviar correo</OpenURLButton>
-            </View>
-            <View style={styles.container}>
-              <Icon style={styles.icon} name="phone-portrait-sharp"/>
-              <Text style={styles.text}>Si nos necesitas también puedes contactarnos por teléfono.</Text>
-              <OpenURLButton url={milesPhone}>Llamar</OpenURLButton>
-            </View>
-        </ScrollView>
-      </View>
+      <ImageBackground source={require('../assets/img/flor.jpg')} style={styles.image}>
+        <View style={styles.body}>
+          <Heading title="Sobre Nosotros"/>
+          <ScrollView>
+              <View style={styles.container}>
+                <Image
+                  style={styles.imageMC}
+                  source={require('../assets/img/banner.png')}
+                  resizeMode="contain"
+                />
+                <Text style={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh enim, consectetur vel augue in imperdiet.</Text>
+                <OpenURLButton url={milesSite}>Visitar sitio web</OpenURLButton>
+              </View>
+              <View style={styles.container}>
+                <Icon style={styles.icon} name="mail"/>
+                <Text style={styles.text}>Envíanos un mensaje con tus inquietudes</Text>
+                <OpenURLButton url={milesMail}>Enviar correo</OpenURLButton>
+              </View>
+              <View style={styles.container}>
+                <Icon style={styles.icon} name="phone-portrait-sharp"/>
+                <Text style={styles.text}>Si nos necesitas también puedes contactarnos por teléfono.</Text>
+                <OpenURLButton url={milesPhone}>Llamar</OpenURLButton>
+              </View>
+          </ScrollView>
+        </View>
+      </ImageBackground>
     )
   }
 }
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
     fontSize: 22, 
     fontWeight: 'bold',
   },
-  image: {
+  imageMC: {
       width: undefined,
       height: undefined,
       padding: 30,
@@ -84,6 +87,11 @@ const styles = StyleSheet.create({
     color: "#aaa",
     marginBottom: 10,
     alignSelf: "center"
-  }
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
+  },
 })
 export default About
