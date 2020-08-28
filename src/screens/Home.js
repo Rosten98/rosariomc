@@ -3,8 +3,9 @@ import { Text, View, StyleSheet, TouchableOpacity, Alert, ImageBackground } from
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import LinearGradient from 'react-native-linear-gradient'
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/AntDesign';
 
+import MyTabBar from '../components/MyTabBar'
 import Heading from '../components/Heading'
 import Mysteries from './Mysteries';
 import About from './About';
@@ -51,29 +52,30 @@ class HomeScreen extends Component {
 
 const Home = ({navigation}) => {
   return (
-    <BottomTab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
-          let iconName;
-          if (route.name === 'Inicio') {
-            iconName = 'home-sharp'
-          } else if (route.name === 'Misterios') {
-            iconName = 'bookmarks-sharp'
-          } else if (route.name === 'Nosotros') {
-            iconName = 'information-circle-outline'
-          } else {
-            iconName = 'home-sharp'
-          }
+    // <BottomTab.Navigator
+    //   screenOptions={({ route }) => ({
+    //     tabBarIcon: ({ color, size }) => {
+    //       let iconName;
+    //       if (route.name === 'Inicio') {
+    //         iconName = 'home-sharp'
+    //       } else if (route.name === 'Misterios') {
+    //         iconName = 'bookmarks-sharp'
+    //       } else if (route.name === 'Nosotros') {
+    //         iconName = 'information-circle-outline'
+    //       } else {
+    //         iconName = 'home-sharp'
+    //       }
 
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-      })}
-      tabBarOptions={{
-        activeTintColor: 'black',
-        inactiveTintColor: 'gray',
-      }}
-    >
+    //       // You can return any component that you like here!
+    //       return <Ionicons name={iconName} size={size} color={color} />;
+    //     },
+    //   })}
+    //   tabBarOptions={{
+    //     activeTintColor: 'black',
+    //     inactiveTintColor: 'gray',
+    //   }}
+    // >
+    <BottomTab.Navigator tabBar={props => <MyTabBar {...props}/>}>
       <BottomTab.Screen name="Inicio" component={HomeScreen}/>
       <BottomTab.Screen name="Misterios" component={Mysteries} />
       <BottomTab.Screen name="Nosotros" component={About} />

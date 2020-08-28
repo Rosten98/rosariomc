@@ -45,8 +45,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   }, 
   list: {
-    // backgroundColor: 'red',
-    // paddingVertical: 100
+    marginBottom: 70
   },
   image: {
     flex: 1,

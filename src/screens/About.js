@@ -26,7 +26,7 @@ class About extends Component {
       <ImageBackground source={require('../assets/img/flor.jpg')} style={styles.image}>
         <View style={styles.body}>
           <Heading title="Sobre Nosotros"/>
-          <ScrollView>
+          <ScrollView style={styles.list}>
               <View style={styles.container}>
                 <Image
                   style={styles.imageMC}
@@ -57,6 +57,9 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     paddingHorizontal: 10,
+  },
+  list: {
+    marginBottom: 70
   },
   container: {
     margin: 10,

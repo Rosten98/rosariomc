@@ -38,9 +38,9 @@ const styles = new StyleSheet.create({
         width: 100,
         backgroundColor: "#D33F49",
         borderRadius: 50,
-        paddingVertical: 15,
+        paddingVertical: 10,
         marginTop: 20,
-        width: 140,
+        width: 130,
     }, 
     btnTxt: {
         color: "#fff",
