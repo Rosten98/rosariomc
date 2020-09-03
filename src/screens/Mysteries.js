@@ -16,7 +16,7 @@ class Mysteries extends Component {
   render() {
     return (
       <ImageBackground source={require('../assets/img/flor.jpg')} style={styles.image}>
-        <View style={styles.body}>
+        {/* <View style={styles.body}> */}
             <Heading title="Misterios"/>
             <FlatList
               style={styles.list}
@@ -26,7 +26,7 @@ class Mysteries extends Component {
                 <MysteryCard mystery={item}/>
               )}
             />
-        </View>
+        {/* </View> */}
       </ImageBackground>
     )
   }
@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   }, 
   list: {
-    marginBottom: 70
+    marginBottom: 80,
+    paddingHorizontal: 10,
   },
   image: {
     flex: 1,
