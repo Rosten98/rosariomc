@@ -3,6 +3,7 @@ import { View, FlatList, StyleSheet, ImageBackground } from 'react-native'
 import Heading from '../components/Heading'
 import MysteryCard from '../components/MysteryCard'
 import mysteries from '../assets/mysteries'
+import LinearGradient from 'react-native-linear-gradient'
 
 
 class Mysteries extends Component {
@@ -15,19 +16,23 @@ class Mysteries extends Component {
 
   render() {
     return (
-      <ImageBackground source={require('../assets/img/flor.jpg')} style={styles.image}>
-        {/* <View style={styles.body}> */}
-            <Heading title="Misterios"/>
-            <FlatList
-              style={styles.list}
-              keyExtractor={(item) => item.id.toString()}
-              data={this.state.mysteriesList}
-              renderItem={({ item }) => (
-                <MysteryCard mystery={item}/>
-              )}
-            />
-        {/* </View> */}
-      </ImageBackground>
+      // <ImageBackground source={require('../assets/img/flor.jpg')} style={styles.image}>
+        <LinearGradient 
+          colors={['#FFFFFF', '#D8E2B4']} 
+          style={styles.gradient}
+          start={{ x: 0, y: 0  }}
+          end={{ x: 1, y: 1 }}>
+          <Heading title="Misterios"/>
+          <FlatList
+            style={styles.list}
+            keyExtractor={(item) => item.id.toString()}
+            data={this.state.mysteriesList}
+            renderItem={({ item }) => (
+              <MysteryCard mystery={item}/>
+            )}
+          />        
+        </LinearGradient>
+      // </ImageBackground>
     )
   }
 }
@@ -36,6 +41,9 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     paddingHorizontal: 10,
+  },
+  gradient: {
+    flex: 1,
   },
   textHeading: {
     color: "#363636",

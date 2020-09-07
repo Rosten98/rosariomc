@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 30,
+        // marginTop: 10,
     },
     textHeading: {
         color: "#363636",
@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     logo: {
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
     },
 });
 
