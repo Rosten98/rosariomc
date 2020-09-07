@@ -31,7 +31,8 @@ const App: () => React$Node = () => {
           options= {{
             headerStyle: {
               elevation: 0
-            }
+            },
+            headerShown: false
           }}
         />
       </RootStack.Navigator>
