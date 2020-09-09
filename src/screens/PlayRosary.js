@@ -9,6 +9,7 @@ export default class PlayRosary extends Component {
     
     state = {
         todayMysteries: {},
+        maxMysteries: 5,
         play: false,
         start: true,
         mysteryId: 0,
@@ -49,62 +50,84 @@ export default class PlayRosary extends Component {
         })
     }
 
+    togglePlay = () => {
+        this.setState(prevState => ({
+            ...prevState,
+            play: !prevState.play
+        }))
+    }
+
     render() {
         const rosary = this.state.todayMysteries
         const getMystery = this.state.mysteryId
         console.log(rosary)
+        console.log(`Get mystery ${getMystery}`)
         return (
             <ImageBackground source={require('../assets/img/flor.jpg')} style={styles.image}>
-                <View style={{flex: 1, justifyContent: 'space-between', backgroundColor: 'rgba(36,36,36,0.1)'}}>
-                    <LinearGradient 
-                        colors={['rgba(54, 54, 54, 0)', 'rgba(54, 54, 54, .6)']} 
-                        start={{ x: 0, y: 1 }}
-                        end={{ x: 0, y: 0 }}> 
-                        <TouchableOpacity style={styles.exit} onPress={() => this.props.navigation.navigate("Home")}>
-                            <Icon name="logout" size={20} color="#E0E0E0"/>
-                            <Text style={styles.txtControls}>Salir</Text>
-                        </TouchableOpacity>
-                    </LinearGradient>
-                    
-                    <View style={{marginBottom: 200, paddingHorizontal: 10}}>
-                        <Text> { Array.isArray(rosary.mysteries) && rosary.mysteries.length && rosary.mysteries[getMystery] } </Text>
-                        <Text> Misterios {rosary.name} </Text>
-                        <Text>
-                            {
-                                getMystery === 0 ? 'Primer' :
-                                getMystery === 1 ? 'Segundo' :
-                                getMystery === 2 ? 'Tercer' :
-                                getMystery === 3 ? 'Cuarto' : 'Quinto'
-                            } misterio
-                        </Text>
-                    </View>
-
-                    <LinearGradient 
-                        colors={['rgba(54, 54, 54, 0)', 'rgba(54, 54, 54, .6)']} 
-                        style={styles.controls}
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 0, y: 1 }}>  
-                        <TouchableOpacity style={styles.controlBtn}>
-                            <Icon name="left" size={24} color="#E0E0E0"/>
-                            <Text style={styles.txtControls}>Anterior</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Icon name="play" color="#E0E0E0" size={54}/>
-                        </TouchableOpacity>
-                        {/* <TouchableOpacity>
-                            <Icon name="pausecircle" color="#E0E0E0" size={48}/>
-                        </TouchableOpacity> */}
+                {
+                    Array.isArray(rosary.mysteries) && rosary.mysteries.length && rosary.mysteries[getMystery] !== 'LETANIAS' ? 
+                    <View style={{flex: 1, justifyContent: 'space-between', backgroundColor: 'rgba(0,0,0,0.4)'}}>
+                        <LinearGradient 
+                            colors={['rgba(54, 54, 54, 0)', 'rgba(54, 54, 54, .6)']} 
+                            start={{ x: 0, y: 1 }}
+                            end={{ x: 0, y: 0 }}> 
+                            <TouchableOpacity style={styles.exit} onPress={() => this.props.navigation.navigate("Home")}>
+                                <Icon name="logout" size={20} color="#E0E0E0"/>
+                                <Text style={styles.txtControls}>Salir</Text>
+                            </TouchableOpacity>
+                        </LinearGradient>
                         
-                        <TouchableOpacity style={styles.controlBtn}>
-                            <Text style={styles.txtControls}>Siguiente</Text>
-                            <Icon name="right" size={24} color="#E0E0E0"/>
-                        </TouchableOpacity>
-                    </LinearGradient>
-                </View>
+                        <View style={{marginBottom: 0, paddingHorizontal: 10}}>
+                            <Text style={styles.mysteries}> Misterios {rosary.name} </Text>
+                            <Text style={styles.subtitle}>
+                                {
+                                    getMystery === 0 ? 'Primer' :
+                                    getMystery === 1 ? 'Segundo' :
+                                    getMystery === 2 ? 'Tercer' :
+                                    getMystery === 3 ? 'Cuarto' : 'Quinto'
+                                } misterio
+                            </Text>
+                            <Text style={styles.title}>{ rosary.mysteries[getMystery] } </Text>
+                        </View>
 
-                {/* <View>
-                    <Text>Mostrar letanías</Text>
-                </View> */}
+                        <LinearGradient 
+                            colors={['rgba(54, 54, 54, 0)', 'rgba(54, 54, 54, .6)']} 
+                            style={styles.controls}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 0, y: 1 }}> 
+                            {
+                                getMystery !== 0 ?
+                                <TouchableOpacity style={styles.controlBtn}>
+                                    <Icon name="left" size={22} color="#E0E0E0"/>
+                                    <Text style={styles.txtControls}>Anterior</Text>
+                                </TouchableOpacity>
+                                :
+                                <View style={{opacity: .2, flexDirection: 'row'}}>
+                                    <Icon name="left" size={22} color="#E0E0E0"/>
+                                    <Text style={styles.txtControls}>Anterior</Text>
+                                </View>
+                            } 
+                            <TouchableOpacity onPress={() => this.togglePlay()}>
+                            {
+                                this.state.play === false ?
+                                <Icon name="play" color="#E0E0E0" size={48}/>
+                                :
+                                <Icon name="pausecircle" color="#E0E0E0" size={48}/>
+                            }
+                            </TouchableOpacity>
+                            
+                            <TouchableOpacity style={styles.controlBtn}>
+                                <Text style={styles.txtControls}>Siguiente</Text>
+                                <Icon name="right" size={22} color="#E0E0E0"/>
+                            </TouchableOpacity>
+                        </LinearGradient>
+                    </View>
+                    :
+                    <View>
+                        <Text>Mostrar letanías</Text>
+                    </View> 
+                }
+
             </ImageBackground>
         )
     }
@@ -130,10 +153,25 @@ const styles =  StyleSheet.create({
     },
     controlBtn: {
         flexDirection: "row", 
-        alignItems: "center",
+        justifyContent: "center",
     },
     txtControls: {
         color: "#E0E0E0",
         marginHorizontal: 10, 
+    },
+    title: {
+        color: "#fff",
+        fontWeight: 'bold',
+        fontSize: 32
+    },
+    subtitle: {
+        marginBottom: 20,
+        color: "#ddd",
+        fontWeight: 'bold',
+        fontSize: 20
+    },
+    mysteries: {
+        color: "#ddd",
+        fontSize: 16
     }
 })

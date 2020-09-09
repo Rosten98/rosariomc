@@ -62,7 +62,8 @@ export default [
             "Jesús con la Cruz a cuestas encuentra a su Santísima Madre",
             "La Crucifixión y Muerte de nuestro Señor Jesucristo y María al pie de la Cruz",
             "El Descendimiento de la Cruz y Jesús en los brazos de su Santísima Madre",
-            "La Sepultura de nuestro Señor y la Soledad de María"
+            "La Sepultura de nuestro Señor y la Soledad de María",
+            "LETANIAS"
         ]
     }
 ]
