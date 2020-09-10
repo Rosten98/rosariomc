@@ -10,9 +10,12 @@ export default class PlayRosary extends Component {
     state = {
         todayMysteries: {},
         maxMysteries: 5,
+        duration: 5, //segundos
         play: false,
         start: true,
+        time: 0,
         mysteryId: 0,
+        letanies: false,
     }
     
 
@@ -50,6 +53,10 @@ export default class PlayRosary extends Component {
         })
     }
 
+    componentWillUnmount() {
+        this.stop()
+    }
+
     togglePlay = () => {
         this.setState(prevState => ({
             ...prevState,
@@ -57,11 +64,59 @@ export default class PlayRosary extends Component {
         }))
     }
 
+    playMystery = () => {
+        this.timer = setInterval(
+            () => this.tick(),
+            1000
+        )
+    }
+
+    tick = () => {   
+        if(this.state.time < this.state.duration){ 
+            this.setState( prevState => ({
+                ...prevState,
+                time: prevState.time + 1,
+            })) 
+        } else {
+            this.nextMystery() 
+        }  
+    }
+
+    stop = () => {
+        clearInterval(this.timer);
+    }
+
+    previousMystery = () => {
+        this.stop()
+        this.setState( prevState => ({
+            ...prevState,
+            play: false,
+            start: true,
+            time: 0,
+            mysteryId: prevState.mysteryId - 1,
+        }))
+    }
+
+    nextMystery = () => {
+        this.stop()
+        this.setState( prevState => ({
+            ...prevState,
+            play: false,
+            start: true,
+            time: 0,
+            mysteryId: prevState.mysteryId + 1,
+        }))
+        if(this.state.mysteryId === 5){
+            this.setState(prevState => ({
+                ...prevState,
+                letanies: prevState.letanies
+            }))
+        }
+    }
+
     render() {
         const rosary = this.state.todayMysteries
         const getMystery = this.state.mysteryId
-        console.log(rosary)
-        console.log(`Get mystery ${getMystery}`)
         return (
             <ImageBackground source={require('../assets/img/flor.jpg')} style={styles.image}>
                 {
@@ -95,9 +150,10 @@ export default class PlayRosary extends Component {
                             style={styles.controls}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 0, y: 1 }}> 
+                            <Text>{this.state.time}</Text>
                             {
                                 getMystery !== 0 ?
-                                <TouchableOpacity style={styles.controlBtn}>
+                                <TouchableOpacity style={styles.controlBtn} onPress={() => this.previousMystery()}>
                                     <Icon name="left" size={22} color="#E0E0E0"/>
                                     <Text style={styles.txtControls}>Anterior</Text>
                                 </TouchableOpacity>
@@ -107,16 +163,24 @@ export default class PlayRosary extends Component {
                                     <Text style={styles.txtControls}>Anterior</Text>
                                 </View>
                             } 
-                            <TouchableOpacity onPress={() => this.togglePlay()}>
                             {
                                 this.state.play === false ?
-                                <Icon name="play" color="#E0E0E0" size={48}/>
+                                <TouchableOpacity onPress={() => {
+                                        this.togglePlay()
+                                        this.playMystery()
+                                    }}>
+                                    <Icon name="play" color="#E0E0E0" size={48}/>
+                                </TouchableOpacity>
                                 :
-                                <Icon name="pausecircle" color="#E0E0E0" size={48}/>
+                                <TouchableOpacity onPress={() => {
+                                    this.togglePlay()
+                                    this.stop()
+                                }}>
+                                    <Icon name="pausecircle" color="#E0E0E0" size={48}/>
+                                </TouchableOpacity>
                             }
-                            </TouchableOpacity>
                             
-                            <TouchableOpacity style={styles.controlBtn}>
+                            <TouchableOpacity style={styles.controlBtn} onPress={() => this.nextMystery()}>
                                 <Text style={styles.txtControls}>Siguiente</Text>
                                 <Icon name="right" size={22} color="#E0E0E0"/>
                             </TouchableOpacity>
